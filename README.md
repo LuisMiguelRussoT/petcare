@@ -65,23 +65,4 @@ Se abre en `http://localhost:3000`.
 **Puerto 3000 ocupado** — Inicia con `PORT=3001 npm start`.
 
 ---
-
-## Probar la API con cURL
-
-```bash
-# Registrar
-curl -X POST http://localhost:5000/api/auth/register \
-  -H "Content-Type: application/json" \
-  -d '{"name":"Test","email":"test@test.com","password":"123456"}'
-
-# Login (guarda el token del response)
-curl -X POST http://localhost:5000/api/auth/login \
-  -H "Content-Type: application/json" \
-  -d '{"email":"test@test.com","password":"123456"}'
-
-# Crear registro (reemplaza TOKEN)
-curl -X POST http://localhost:5000/api/medical-records \
-  -H "Authorization: Bearer TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{"petName":"Max","petType":"Dog","petSize":"Big","ownerName":"Test","description":"","vaccinations":[]}'
 ```
