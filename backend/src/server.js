@@ -1,14 +1,19 @@
 const express = require('express');
 const cors = require('cors');
+const swaggerUi = require('swagger-ui-express');
 require('dotenv').config();
 const authRoutes = require('./routes/auth');
 const medicalRecordRoutes = require('./routes/medicalRecords');
+const swaggerSpec = require('./config/swagger');
 
 const app = express();
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Docs
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Routes
 app.use('/api/auth', authRoutes);
