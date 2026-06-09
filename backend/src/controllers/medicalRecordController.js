@@ -2,7 +2,11 @@ const MedicalRecord = require('../models/MedicalRecord');
 const Vaccination = require('../models/Vaccination');
 const { CreateMedicalRecordDto, UpdateMedicalRecordDto } = require('../dtos/medicalRecord.dto');
 
-// Create Medical Record
+/**
+ * Creates a new medical record with optional vaccinations.
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ */
 exports.createMedicalRecord = async (req, res) => {
   try {
     const dto = CreateMedicalRecordDto.fromBody(req.body);
@@ -24,7 +28,11 @@ exports.createMedicalRecord = async (req, res) => {
   }
 };
 
-// Get all Medical Records for owner
+/**
+ * Returns all medical records for the authenticated owner, each with its vaccinations.
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ */
 exports.getMedicalRecords = async (req, res) => {
   try {
     const result = await MedicalRecord.findAllByOwner(req.user.id);
@@ -41,7 +49,11 @@ exports.getMedicalRecords = async (req, res) => {
   }
 };
 
-// Get Single Medical Record
+/**
+ * Returns a single medical record by id, scoped to the authenticated owner.
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ */
 exports.getMedicalRecord = async (req, res) => {
   try {
     const result = await MedicalRecord.findById(req.params.id, req.user.id);
@@ -60,7 +72,11 @@ exports.getMedicalRecord = async (req, res) => {
   }
 };
 
-// Update Medical Record
+/**
+ * Updates a medical record. If vaccinations are provided, they replace the existing ones entirely.
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ */
 exports.updateMedicalRecord = async (req, res) => {
   try {
     const dto = UpdateMedicalRecordDto.fromBody(req.body);
@@ -87,7 +103,11 @@ exports.updateMedicalRecord = async (req, res) => {
   }
 };
 
-// Delete Medical Record
+/**
+ * Deletes a medical record and all its associated vaccinations.
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ */
 exports.deleteMedicalRecord = async (req, res) => {
   try {
     const { id } = req.params;
