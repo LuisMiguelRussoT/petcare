@@ -29,14 +29,13 @@
 - **pg** — driver PostgreSQL
 - **bcryptjs** — hash de contraseñas
 - **jsonwebtoken** — autenticación JWT
+- **swagger-jsdoc** + **swagger-ui-express** — documentación interactiva en `/api/docs`
 - **cors** — permite peticiones desde el frontend
 - **dotenv** — variables de entorno
 
 ### Frontend
 - **React 18** — interfaz de usuario
-- **React Router DOM** — navegación cliente
 - **Axios** — cliente HTTP con interceptor para el token
-- **CSS nativo** — estilos responsivos
 
 ### Base de datos
 - **PostgreSQL 14+**
@@ -47,19 +46,25 @@
 
 ```
 backend/
-  src/config/database.js        ← pool de conexión PostgreSQL
-  src/controllers/authController.js         ← register y login
-  src/controllers/medicalRecordController.js ← CRUD de registros
-  src/middleware/auth.js        ← validación JWT
-  src/routes/auth.js            ← rutas de autenticación
-  src/routes/medicalRecords.js  ← rutas de registros
-  src/server.js                 ← punto de entrada
-  database/schema.sql           ← esquema PostgreSQL
+  src/config/database.js              ← pool de conexión PostgreSQL
+  src/config/swagger.js               ← configuración OpenAPI 3.0
+  src/dtos/auth.dto.js                ← RegisterDto, LoginDto
+  src/dtos/medicalRecord.dto.js       ← CreateMedicalRecordDto, UpdateMedicalRecordDto
+  src/models/Owner.js                 ← queries sobre tabla owners
+  src/models/MedicalRecord.js         ← queries sobre tabla medical_records
+  src/models/Vaccination.js           ← queries sobre tabla vaccinations
+  src/controllers/authController.js           ← register y login
+  src/controllers/medicalRecordController.js  ← CRUD de registros
+  src/middleware/auth.js              ← validación JWT
+  src/routes/auth.js                  ← rutas de autenticación
+  src/routes/medicalRecords.js        ← rutas de registros
+  src/server.js                       ← punto de entrada
+  database/schema.sql                 ← esquema PostgreSQL
 
 frontend/
-  src/components/Login.js             ← login y registro
-  src/components/Dashboard.js         ← vista principal
-  src/components/MedicalRecordForm.js ← formulario CRUD
+  src/pages/LoginPage.js              ← vista de login y registro
+  src/pages/DashboardPage.js          ← vista principal
+  src/components/MedicalRecordForm.js ← formulario crear/editar
   src/components/MedicalRecordList.js ← tabla de registros
   src/services/api.js                 ← cliente HTTP
 ```

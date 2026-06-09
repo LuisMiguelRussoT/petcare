@@ -70,9 +70,12 @@ Se abre en `http://localhost:3000`.
 | Recurso | Descripción |
 |---------|-------------|
 | `http://localhost:5000/api/docs` | Swagger UI — probar los endpoints de la API |
-| `backend/docs/index.html` | JSDoc — documentación del código fuente (generar con `npm run docs`) |
 | [backend/README.md](backend/README.md) | Detalle del backend: estructura, endpoints y scripts |
 | [frontend/README.md](frontend/README.md) | Detalle del frontend: estructura y scripts |
+| [additional_documents/TECHNICAL_SUMMARY.md](additional_documents/TECHNICAL_SUMMARY.md) | Requisitos completados y stack tecnológico |
+| [additional_documents/ERD_DOCUMENTATION.md](additional_documents/ERD_DOCUMENTATION.md) | Esquema de base de datos y relaciones |
+| [additional_documents/DESIGN_PATTERNS.md](additional_documents/DESIGN_PATTERNS.md) | Arquitectura y patrones de diseño |
+| [additional_documents/API_TESTING.md](additional_documents/API_TESTING.md) | Guía para probar los endpoints |
 
 ---
 
