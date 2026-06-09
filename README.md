@@ -1,8 +1,23 @@
-# Inicio Rápido
+# ReWow Pet Care
 
-## 1. Base de datos
+Sistema de gestión de registros médicos para mascotas. Permite a los dueños registrarse, iniciar sesión y administrar el historial médico y de vacunación de sus mascotas.
 
-Abre psql y ejecuta:
+## Estructura del proyecto
+
+```
+petcare/
+├── backend/    # API REST — Node.js + Express + PostgreSQL
+└── frontend/   # Interfaz de usuario — React
+```
+
+## Requisitos
+
+- Node.js 18+
+- PostgreSQL 14+
+
+## Inicio rápido
+
+### 1. Base de datos
 
 ```bash
 psql -U postgres -h localhost
@@ -16,17 +31,18 @@ CREATE DATABASE rewow_petcare;
 
 O con DBeaver: nueva conexión PostgreSQL (host: localhost, port: 5432, user: postgres), luego ejecuta el contenido de `backend/database/schema.sql`.
 
-## 2. Backend
+### 2. Backend
 
 ```bash
 cd backend
+cp .env.example .env   # completar las variables de entorno
 npm install
 npm run dev
 ```
 
 Deberías ver `Server running on port 5000`.
 
-## 3. Frontend
+### 3. Frontend
 
 En otra terminal:
 
@@ -42,10 +58,21 @@ Se abre en `http://localhost:3000`.
 
 ## Prueba básica
 
-1. Registrate con nombre, email y contraseña
+1. Regístrate con nombre, email y contraseña
 2. Inicia sesión
 3. Crea un registro médico con "New Medical Record"
 4. Verifica que aparece en la tabla y que puedes editarlo o eliminarlo
+
+---
+
+## Documentación
+
+| Recurso | Descripción |
+|---------|-------------|
+| `http://localhost:5000/api/docs` | Swagger UI — probar los endpoints de la API |
+| `backend/docs/index.html` | JSDoc — documentación del código fuente (generar con `npm run docs`) |
+| [backend/README.md](backend/README.md) | Detalle del backend: estructura, endpoints y scripts |
+| [frontend/README.md](frontend/README.md) | Detalle del frontend: estructura y scripts |
 
 ---
 
@@ -63,15 +90,3 @@ Se abre en `http://localhost:3000`.
 **Puerto 5000 ocupado** — Cambia `PORT=5001` en `backend/.env`.
 
 **Puerto 3000 ocupado** — Inicia con `PORT=3001 npm start`.
-
----
-
-## Documentación adicional
-
-| Documento | Descripción |
-|-----------|-------------|
-| [Resumen Técnico](additional_documents/TECHNICAL_SUMMARY.md) | Requisitos completados y visión general del proyecto |
-| [Esquema de Base de Datos](additional_documents/ERD_DOCUMENTATION.md) | Tablas, relaciones y estructura del esquema |
-| [Patrones de Diseño](additional_documents/DESIGN_PATTERNS.md) | Arquitectura y patrones utilizados en el código |
-| [Guía de Pruebas de API](additional_documents/API_TESTING.md) | Cómo probar los endpoints con Postman, Thunder Client o curl |
-
