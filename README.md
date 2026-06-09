@@ -65,4 +65,13 @@ Se abre en `http://localhost:3000`.
 **Puerto 3000 ocupado** — Inicia con `PORT=3001 npm start`.
 
 ---
-```
+
+## Documentación adicional
+
+| Documento | Descripción |
+|-----------|-------------|
+| [Resumen Técnico](additional_documents/TECHNICAL_SUMMARY.md) | Requisitos completados y visión general del proyecto |
+| [Esquema de Base de Datos](additional_documents/ERD_DOCUMENTATION.md) | Tablas, relaciones y estructura del esquema |
+| [Patrones de Diseño](additional_documents/DESIGN_PATTERNS.md) | Arquitectura y patrones utilizados en el código |
+| [Guía de Pruebas de API](additional_documents/API_TESTING.md) | Cómo probar los endpoints con Postman, Thunder Client o curl |
+
