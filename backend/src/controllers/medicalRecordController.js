@@ -2,11 +2,6 @@ const MedicalRecord = require('../models/MedicalRecord');
 const Vaccination = require('../models/Vaccination');
 const { CreateMedicalRecordDto, UpdateMedicalRecordDto } = require('../dtos/medicalRecord.dto');
 
-/**
- * Creates a new medical record with optional vaccinations.
- * @param {object} req - Express request
- * @param {object} res - Express response
- */
 exports.createMedicalRecord = async (req, res) => {
   try {
     const dto = CreateMedicalRecordDto.fromBody(req.body);
@@ -28,11 +23,6 @@ exports.createMedicalRecord = async (req, res) => {
   }
 };
 
-/**
- * Returns all medical records for the authenticated owner, each with its vaccinations.
- * @param {object} req - Express request
- * @param {object} res - Express response
- */
 exports.getMedicalRecords = async (req, res) => {
   try {
     const result = await MedicalRecord.findAllByOwner(req.user.id);
@@ -49,11 +39,6 @@ exports.getMedicalRecords = async (req, res) => {
   }
 };
 
-/**
- * Returns a single medical record by id, scoped to the authenticated owner.
- * @param {object} req - Express request
- * @param {object} res - Express response
- */
 exports.getMedicalRecord = async (req, res) => {
   try {
     const result = await MedicalRecord.findById(req.params.id, req.user.id);
@@ -72,11 +57,6 @@ exports.getMedicalRecord = async (req, res) => {
   }
 };
 
-/**
- * Updates a medical record. If vaccinations are provided, they replace the existing ones entirely.
- * @param {object} req - Express request
- * @param {object} res - Express response
- */
 exports.updateMedicalRecord = async (req, res) => {
   try {
     const dto = UpdateMedicalRecordDto.fromBody(req.body);
@@ -103,11 +83,6 @@ exports.updateMedicalRecord = async (req, res) => {
   }
 };
 
-/**
- * Deletes a medical record and all its associated vaccinations.
- * @param {object} req - Express request
- * @param {object} res - Express response
- */
 exports.deleteMedicalRecord = async (req, res) => {
   try {
     const { id } = req.params;

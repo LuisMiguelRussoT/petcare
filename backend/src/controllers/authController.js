@@ -3,11 +3,6 @@ const jwt = require('jsonwebtoken');
 const Owner = require('../models/Owner');
 const { RegisterDto, LoginDto } = require('../dtos/auth.dto');
 
-/**
- * Registers a new owner.
- * @param {object} req - Express request
- * @param {object} res - Express response
- */
 exports.register = async (req, res) => {
   try {
     const dto = RegisterDto.fromBody(req.body);
@@ -30,11 +25,6 @@ exports.register = async (req, res) => {
   }
 };
 
-/**
- * Authenticates an owner and returns a signed JWT.
- * @param {object} req - Express request
- * @param {object} res - Express response
- */
 exports.login = async (req, res) => {
   try {
     const dto = LoginDto.fromBody(req.body);
