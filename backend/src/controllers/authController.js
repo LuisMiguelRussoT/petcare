@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const pool = require('../config/database');
+const Owner = require('../models/Owner');
 
 // Register
 exports.register = async (req, res) => {
@@ -11,20 +11,13 @@ exports.register = async (req, res) => {
       return res.status(400).json({ message: 'All fields are required' });
     }
 
-    // Check if user exists
-    const result = await pool.query('SELECT * FROM owners WHERE email = $1', [email]);
+    const result = await Owner.findByEmail(email);
     if (result.rows.length > 0) {
       return res.status(400).json({ message: 'Email already exists' });
     }
 
-    // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Create user
-    await pool.query(
-      'INSERT INTO owners (name, email, password) VALUES ($1, $2, $3)',
-      [name, email, hashedPassword]
-    );
+    await Owner.create(name, email, hashedPassword);
 
     res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
@@ -41,7 +34,7 @@ exports.login = async (req, res) => {
       return res.status(400).json({ message: 'Email and password are required' });
     }
 
-    const result = await pool.query('SELECT * FROM owners WHERE email = $1', [email]);
+    const result = await Owner.findByEmail(email);
 
     if (result.rows.length === 0) {
       return res.status(401).json({ message: 'Invalid credentials' });
