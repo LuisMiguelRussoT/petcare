@@ -134,34 +134,3 @@ DELETE /medical-records/1
 | 400 | Campos requeridos faltantes o email duplicado |
 | 404 | Registro no encontrado o no pertenece al usuario |
 
----
-
-## Script de prueba con cURL
-
-```bash
-#!/bin/bash
-API="http://localhost:5000/api"
-EMAIL="test@example.com"
-PASS="testpass123"
-
-# 1. Registrar
-curl -X POST $API/auth/register \
-  -H "Content-Type: application/json" \
-  -d "{\"name\":\"Test\",\"email\":\"$EMAIL\",\"password\":\"$PASS\"}"
-
-# 2. Login y guardar token
-RESPONSE=$(curl -X POST $API/auth/login \
-  -H "Content-Type: application/json" \
-  -d "{\"email\":\"$EMAIL\",\"password\":\"$PASS\"}")
-TOKEN=$(echo $RESPONSE | grep -o '"token":"[^"]*' | grep -o '[^"]*$')
-
-# 3. Crear registro
-curl -X POST $API/medical-records \
-  -H "Authorization: Bearer $TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{"petName":"Fluffy","petType":"Cat","petSize":"Small","ownerName":"Test","description":"","vaccinations":[]}'
-
-# 4. Listar registros
-curl -X GET $API/medical-records \
-  -H "Authorization: Bearer $TOKEN"
-```
