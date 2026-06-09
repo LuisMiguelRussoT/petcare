@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { medicalRecordService } from '../services/api';
-import MedicalRecordForm from './MedicalRecordForm';
-import MedicalRecordList from './MedicalRecordList';
+import MedicalRecordForm from '../components/MedicalRecordForm';
+import MedicalRecordList from '../components/MedicalRecordList';
 
-const Dashboard = ({ user, onLogout }) => {
+const DashboardPage = ({ user, onLogout }) => {
   const [records, setRecords] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
@@ -125,4 +125,4 @@ const Dashboard = ({ user, onLogout }) => {
   );
 };
 
-export default Dashboard;
+export default DashboardPage;

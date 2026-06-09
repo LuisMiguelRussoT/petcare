@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Login from './components/Login';
-import Dashboard from './components/Dashboard';
+import LoginPage from './pages/LoginPage';
+import DashboardPage from './pages/DashboardPage';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -29,10 +29,10 @@ function App() {
   }
 
   return user ? (
-    <Dashboard user={user} onLogout={handleLogout} />
+    <DashboardPage user={user} onLogout={handleLogout} />
   ) : (
     <div className="login-page">
-      <Login onLoginSuccess={handleLoginSuccess} />
+      <LoginPage onLoginSuccess={handleLoginSuccess} />
     </div>
   );
 }

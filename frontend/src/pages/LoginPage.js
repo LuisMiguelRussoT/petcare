@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { authService } from '../services/api';
 
-const Login = ({ onLoginSuccess }) => {
+const LoginPage = ({ onLoginSuccess }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
     email: '',
@@ -110,4 +110,4 @@ const Login = ({ onLoginSuccess }) => {
   );
 };
 
-export default Login;
+export default LoginPage;
