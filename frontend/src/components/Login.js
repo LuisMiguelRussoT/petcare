@@ -45,7 +45,14 @@ const Login = ({ onLoginSuccess }) => {
 
   return (
     <div className="form-container">
-      <h2>{isLogin ? 'Login' : 'Register'}</h2>
+      <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+        <div style={{ fontSize: '2rem', marginBottom: '0.25rem' }}>🐾</div>
+        <h1 style={{ fontSize: '1.4rem', fontWeight: '700', color: 'var(--dark)', marginBottom: '0.25rem' }}>ReWow Pet Care</h1>
+        <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Sistema de registros médicos</p>
+      </div>
+      <h2 style={{ fontSize: '1rem', color: 'var(--text-muted)', fontWeight: '500', textAlign: 'center', marginBottom: '1.5rem' }}>
+        {isLogin ? 'Inicia sesión en tu cuenta' : 'Crea tu cuenta'}
+      </h2>
       {error && <div className="alert alert-error">{error}</div>}
 
       <form onSubmit={handleSubmit}>
@@ -94,7 +101,7 @@ const Login = ({ onLoginSuccess }) => {
         <button
           type="button"
           onClick={() => setIsLogin(!isLogin)}
-          style={{ background: 'none', color: '#3498db', cursor: 'pointer', textDecoration: 'underline', border: 'none', padding: 0 }}
+          style={{ background: 'none', color: 'var(--green-hover)', cursor: 'pointer', textDecoration: 'underline', border: 'none', padding: 0, fontWeight: '600' }}
         >
           {isLogin ? 'Register' : 'Login'}
         </button>

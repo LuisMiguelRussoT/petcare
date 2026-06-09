@@ -31,10 +31,7 @@ function App() {
   return user ? (
     <Dashboard user={user} onLogout={handleLogout} />
   ) : (
-    <div style={{ backgroundColor: '#f5f5f5', minHeight: '100vh' }}>
-      <nav className="navbar" style={{ display: 'flex', justifyContent: 'center' }}>
-        <h1>🐾 ReWow Pet Care System</h1>
-      </nav>
+    <div className="login-page">
       <Login onLoginSuccess={handleLoginSuccess} />
     </div>
   );
