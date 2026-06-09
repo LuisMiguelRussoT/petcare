@@ -7,7 +7,7 @@ const Owner = {
   /**
    * Finds an owner by email address.
    * @param {string} email
-   * @returns {Promise<import('pg').QueryResult>}
+   * @returns {Promise<object>}
    */
   findByEmail: (email) =>
     pool.query('SELECT * FROM owners WHERE email = $1', [email]),
@@ -17,7 +17,7 @@ const Owner = {
    * @param {string} name
    * @param {string} email
    * @param {string} hashedPassword - Bcrypt hashed password
-   * @returns {Promise<import('pg').QueryResult>}
+   * @returns {Promise<object>}
    */
   create: (name, email, hashedPassword) =>
     pool.query(

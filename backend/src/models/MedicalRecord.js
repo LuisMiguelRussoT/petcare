@@ -7,8 +7,8 @@ const MedicalRecord = {
   /**
    * Inserts a new medical record.
    * @param {number} ownerId - ID of the authenticated owner
-   * @param {import('../dtos/medicalRecord.dto').CreateMedicalRecordDto} dto
-   * @returns {Promise<import('pg').QueryResult>} Result containing the new record's id
+   * @param {object} dto - CreateMedicalRecordDto
+   * @returns {Promise<object>} Result containing the new record's id
    */
   create: (ownerId, { petName, petType, petSize, ownerName, description }) =>
     pool.query(
@@ -19,7 +19,7 @@ const MedicalRecord = {
   /**
    * Returns all medical records belonging to an owner, ordered by creation date.
    * @param {number} ownerId
-   * @returns {Promise<import('pg').QueryResult>}
+   * @returns {Promise<object>}
    */
   findAllByOwner: (ownerId) =>
     pool.query(
@@ -31,7 +31,7 @@ const MedicalRecord = {
    * Returns a single medical record by id, scoped to the owner.
    * @param {number} id - Medical record ID
    * @param {number} ownerId - ID of the authenticated owner
-   * @returns {Promise<import('pg').QueryResult>}
+   * @returns {Promise<object>}
    */
   findById: (id, ownerId) =>
     pool.query(
@@ -42,8 +42,8 @@ const MedicalRecord = {
   /**
    * Updates the fields of an existing medical record.
    * @param {number} id - Medical record ID
-   * @param {import('../dtos/medicalRecord.dto').UpdateMedicalRecordDto} dto
-   * @returns {Promise<import('pg').QueryResult>}
+   * @param {object} dto - UpdateMedicalRecordDto
+   * @returns {Promise<object>}
    */
   update: (id, { petName, petType, petSize, ownerName, description }) =>
     pool.query(
@@ -54,7 +54,7 @@ const MedicalRecord = {
   /**
    * Deletes a medical record by id.
    * @param {number} id - Medical record ID
-   * @returns {Promise<import('pg').QueryResult>}
+   * @returns {Promise<object>}
    */
   delete: (id) =>
     pool.query('DELETE FROM medical_records WHERE id = $1', [id]),

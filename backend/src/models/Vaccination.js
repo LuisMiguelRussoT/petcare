@@ -11,7 +11,7 @@ const Vaccination = {
    * @param {number|null} vac.number - Vaccination number/dose
    * @param {string} vac.type - Vaccine name or type
    * @param {string|null} vac.date - Date of vaccination (ISO format)
-   * @returns {Promise<import('pg').QueryResult>}
+   * @returns {Promise<object>}
    */
   create: (recordId, { number, type, date }) =>
     pool.query(
@@ -22,7 +22,7 @@ const Vaccination = {
   /**
    * Returns all vaccinations for a given medical record.
    * @param {number} recordId - ID of the parent medical record
-   * @returns {Promise<import('pg').QueryResult>}
+   * @returns {Promise<object>}
    */
   findByRecordId: (recordId) =>
     pool.query(
@@ -34,7 +34,7 @@ const Vaccination = {
    * Deletes all vaccinations for a given medical record.
    * Used before re-inserting updated vaccinations.
    * @param {number} recordId - ID of the parent medical record
-   * @returns {Promise<import('pg').QueryResult>}
+   * @returns {Promise<object>}
    */
   deleteByRecordId: (recordId) =>
     pool.query('DELETE FROM vaccinations WHERE medical_record_id = $1', [recordId]),

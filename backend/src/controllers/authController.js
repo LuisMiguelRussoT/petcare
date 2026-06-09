@@ -5,8 +5,8 @@ const { RegisterDto, LoginDto } = require('../dtos/auth.dto');
 
 /**
  * Registers a new owner.
- * @param {import('express').Request} req
- * @param {import('express').Response} res
+ * @param {object} req - Express request
+ * @param {object} res - Express response
  */
 exports.register = async (req, res) => {
   try {
@@ -32,8 +32,8 @@ exports.register = async (req, res) => {
 
 /**
  * Authenticates an owner and returns a signed JWT.
- * @param {import('express').Request} req
- * @param {import('express').Response} res
+ * @param {object} req - Express request
+ * @param {object} res - Express response
  */
 exports.login = async (req, res) => {
   try {
