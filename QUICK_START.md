@@ -85,15 +85,3 @@ curl -X POST http://localhost:5000/api/medical-records \
   -H "Content-Type: application/json" \
   -d '{"petName":"Max","petType":"Dog","petSize":"Big","ownerName":"Test","description":"","vaccinations":[]}'
 ```
-
----
-
-## Documentación
-
-| Documento | Descripción |
-|-----------|-------------|
-| [README.md](README.md) | Descripción general del proyecto |
-| [API_TESTING.md](API_TESTING.md) | Endpoints con ejemplos completos |
-| [DESIGN_PATTERNS.md](DESIGN_PATTERNS.md) | Arquitectura y patrones |
-| [ERD_DOCUMENTATION.md](ERD_DOCUMENTATION.md) | Esquema de base de datos |
-| [TECHNICAL_SUMMARY.md](TECHNICAL_SUMMARY.md) | Resumen del stack y requisitos |
